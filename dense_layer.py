@@ -60,7 +60,9 @@ class DenseLayer(yaml.YAMLObject):
         return e_x / e_x.sum()
 
     def softmax_derivate(self,x):
-        print("no")
+        sm = self.softmax(x)
+
+        return sm * (1-sm)
 
     def relu(self, x):
         return x * (x > 0)

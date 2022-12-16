@@ -36,13 +36,12 @@ if __name__ == '__main__':
     model.add_layer(layer4)
     model.add_layer(output)
 
-
-    # saving some of the dataset as testset
-    model.train(X[:130], Y[:130], 25)
+    # saving some of the dataset as testset, the data is shuffled otherwise this is a bad way to split the data
+    model.train(X[:130], Y[:130], 1000)
     model.save('NN_model.yaml')
     model.load('NN_model.yaml')
     model.print_model()
-    predictions = model.predict(X[131:149])
+    predictions = model.predict(X[131:149],Y[131:149])
     print(predictions)
 
 
